@@ -1,0 +1,38 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres@localhost:5432/entity_store?schema=callhealth_production"
+}
+
+model Case_Status {
+  record_id   BigInt  @id @map("_record_id")
+  Status      String?
+  parent_id   BigInt? @map("_parent_id")
+  org_unit_id BigInt? @map("_org_unit_id")
+  owner_id    BigInt? @map("_owner_id")
+  audit_data  String? @map("_audit_data")
+  updated_at  BigInt? @map("_updated_at")
+
+  @@index([parent_id], map: "parentid_16770701439921164584143")
+}
+
+model Reference_test_names {
+  record_id      BigInt  @id @map("_record_id")
+  Type           String?
+  TEST_ID        String?
+  code           String?
+  name           String?
+  Corporate_name String? @map("Corporate name")
+  parent_id      BigInt? @map("_parent_id")
+  org_unit_id    BigInt? @map("_org_unit_id")
+  owner_id       BigInt? @map("_owner_id")
+  audit_data     String? @map("_audit_data")
+  updated_at     BigInt? @map("_updated_at")
+
+  @@index([parent_id], map: "parentid_16770695550491920393149")
+  @@map("Reference test names")
+}
