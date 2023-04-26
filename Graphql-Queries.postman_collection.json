@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "c23c8aab-c427-47c3-8850-5ff1d2ddaea4",
+		"name": "Graphql-Queries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15943744"
+	},
+	"item": [
+		{
+			"name": "query-1 Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "neo4j",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query cr{\n    prisma_findManyCase_Status{\n        record_id\n        Status\n        parent_id\n        org_unit_id \n        owner_id   \n        audit_data\n        updated_at\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9991/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9991",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query-1 Copy 2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "neo4j",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query cr{\n    prisma_findManyproduct{\n        product_id\n        product_name\n        product_description\n        pid \n        product_category{\n            category_id\n            product_id\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9991/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9991",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query-2 Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "neo4j",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query cr{\n    prisma_findManycallhealth_production_Employee_ISP_Master{\n        Officer_ID\n        Mobile_Number\n        Email_ID\n        Officer_Name\n        Role\n        callhealth_production_Role_vs_Service_Type{\n            Service_Type\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9991/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9991",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query-2_v2 Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "neo4j",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query crdwsd{\n    prisma_findManyEmployee_ISP_Master(where:{Servicing_Areas_pincodes:{contains:\"500045\"},Role:{in:[\"PHO\",\"MHO\"]},RoleID8and9_Slots:{some:{OR:[{is_available:{equals:null}},{is_available:{not:{equals:1}}}],scheduled_date:{gte:\"2023-04-16T18:30:00.000Z\"}}}}){\n        Officer_ID\n        Mobile_Number\n        Email_ID\n        Officer_Name\n        Role\n        Servicing_Areas_pincodes\n        Role_vs_Service_Type{\n            Service_Type\n        }\n        RoleID8and9_Slots(where:{OR:[{is_available:{equals:null}},{is_available:{not:{equals:1}}}],scheduled_date:{gte:\"2023-04-16T18:30:00.000Z\"}}){\n            officer_id\n            is_booked\n            scheduled_date\n            is_available\n            slot_start_time\n            slot_end_time\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9991/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9991",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query-2_v3 Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "neo4j",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query crdwasd{\n    prisma_findManyRoleID8and9_Slots(where:{scheduled_date:{gte:\"2023-04-16T18:30:00.000Z\"},OR:[{is_available:{equals:null}},{is_available:{not:{equals:1}}}],Employee_ISP_Master:{is:{Role:{in:[\"PHO\",\"MHO\"]},Servicing_Areas_pincodes:{contains:\"500045\"}}}},take:30,orderBy:{slot_start_time:\"asc\"}){\n        officer_id\n        scheduled_date\n        is_available\n        slot_start_time\n        slot_end_time\n        Employee_ISP_Master{\n            Mobile_Number\n            Email_ID\n            Role_vs_Service_Type{\n                Role\n                Service_Type\n            }\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9991/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9991",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query-2_v4 Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "neo4j",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query crdwasd{\n    prisma_groupByRoleID8and9_Slots(where:{scheduled_date:{gte:\"2023-04-16T18:30:00.000Z\"},OR:[{is_available:{equals:null}},{is_available:{not:{equals:1}}}],Employee_ISP_Master:{is:{Role:{in:[\"PHO\",\"MHO\"]},Servicing_Areas_pincodes:{contains:\"500045\"}}}}){\n        officer_id\n        scheduled_date\n        slot_start_time\n        slot_end_time\n        Employee_ISP_Master{\n            Mobile_Number\n            Email_ID\n            Role\n            Role_vs_Service_Type{\n                Service_Type\n            }\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9991/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9991",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

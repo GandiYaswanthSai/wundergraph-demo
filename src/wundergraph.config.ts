@@ -13,7 +13,8 @@ const prismaDB = introspect.prisma({
     apiNamespace: "prisma",
     prismaFilePath: "./prisma/schema.prisma",
     introspection: {
-        disableCache: true,
+        disableCache: false,
+        pollingIntervalSeconds:10
     },
 });
 configureWunderGraphApplication({

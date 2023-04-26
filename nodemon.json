@@ -7,7 +7,8 @@
     },
     "env": {
       "NODE_ENV": "development",
-      "WG_DIR_ABS": "/home/yaswonth/Public/apollo-opensource/runfiles/wundergraph-ts"
+      "WG_DIR_ABS": "/home/yaswonth/Public/apollo-opensource/runfiles/wundergraph-ts",
+      "WG_DATA_SOURCE_POLLING_MODE":"false"
     },
     "ext": "js,json,ts"
   }

@@ -20,6 +20,197 @@ model Case_Status {
   @@index([parent_id], map: "parentid_16770701439921164584143")
 }
 
+model Diagnostics_Slots {
+  record_id             BigInt    @id @map("_record_id")
+  slot_id               BigInt?
+  officer_id            String?
+  engagement_level      String?
+  is_booked             BigInt?
+  is_soft_lock          BigInt?
+  soft_locked_date      DateTime? @db.Timestamp(6)
+  is_available          BigInt?
+  enabled               BigInt?
+  officer_status        BigInt?
+  created_by            String?
+  created_date          DateTime? @db.Timestamp(6)
+  modified_by           String?
+  modified_date         DateTime? @db.Timestamp(6)
+  gender                BigInt?
+  associate_id          String?
+  branch_id             String?
+  speciality            String?
+  service_category      BigInt?
+  role_id               BigInt?
+  skill_level           BigInt?
+  consultation_types    String?
+  officer_name          String?
+  officer_type          BigInt?
+  contact_number        String?
+  ch_owned              BigInt?
+  patient_mrn           BigInt?
+  service_did           String?
+  careplan_tr_id        String?
+  id                    String?
+  associate_category    BigInt?
+  order_assignment_mode BigInt?
+  transaction_id        String?
+  scheduled_date        DateTime? @db.Timestamp(6)
+  slot_start_time       String?
+  slot_end_time         String?
+  skill                 String?
+  order_latitude        Decimal?  @db.Decimal
+  order_longitude       Decimal?  @db.Decimal
+  order_type            String?
+  order_count           BigInt?
+  pincode               String?
+  patientGender         BigInt?
+  parent_id             BigInt?   @map("_parent_id")
+  org_unit_id           BigInt?   @map("_org_unit_id")
+  owner_id              BigInt?   @map("_owner_id")
+  audit_data            String?   @map("_audit_data")
+  updated_at            BigInt?   @map("_updated_at")
+
+  @@index([parent_id], map: "parentid_1677069491990450328786")
+}
+
+model Employee_ISP_Master {
+  record_id                        BigInt                @id @map("_record_id")
+  Officer_Name                     String?               @map("Officer Name")
+  Officer_ID                       String?               @unique @map("Officer ID")
+  City                             String?
+  Mobile_Number                    String?               @map("Mobile Number")
+  Email_ID                         String?               @map("Email ID")
+  Gender                           String?
+  Professional_Experience_in_Years Decimal?              @map("Professional Experience in Years") @db.Decimal
+  Role                             String?
+  Qualification                    String?
+  Engagement_Level                 String?               @map("Engagement Level")
+  Elgible_for_Minimum_Orders       String?               @map("Elgible for Minimum Orders")
+  Minimum_Orders_per_day           BigInt?               @map("Minimum Orders per day")
+  Price_per_Order                  String?               @map("Price per Order")
+  Languages_Spoken                 String?               @map("Languages Spoken")
+  Order_Assignment_Mode            String?               @map("Order Assignment Mode")
+  Engagement_Type                  String?               @map("Engagement Type")
+  Is_Branch_Admin                  String?               @map("Is Branch Admin")
+  Tenants                          String?
+  Organization                     String?
+  Associate_ID                     String?               @map("Associate ID")
+  Associate_Service_ID             String?               @map("Associate Service ID")
+  Associate_Name                   String?               @map("Associate Name")
+  Associate_Email_ID               String?               @map("Associate Email ID")
+  Branch_ID                        String?               @map("Branch ID")
+  Branch_Location                  String?               @map("Branch Location")
+  Branch_Name                      String?               @map("Branch Name")
+  Servicing_Areas_pincodes         String?               @map("Servicing Areas pincodes")
+  Active_Status                    String?               @map("Active Status")
+  Status                           String?
+  Select_Speciality                String?               @map("Select Speciality")
+  Action                           String?
+  Action_for_CR                    String?               @map("Action for CR")
+  Eligible_for_Minimum_Guarantee   String?               @map("Eligible for Minimum Guarantee")
+  Start_Date                       DateTime?             @map("Start Date") @db.Timestamp(6)
+  End_Date                         DateTime?             @map("End Date") @db.Timestamp(6)
+  Tag_1                            String?               @map("Tag 1")
+  Tag_2                            String?               @map("Tag 2")
+  Tag_3                            String?               @map("Tag 3")
+  Scan_Copy_Of_Digital_Signature   String?               @map("Scan Copy Of Digital Signature")
+  Medical_License_Number           String?               @map("Medical License Number")
+  Training_Start_Date              DateTime?             @map("Training Start Date") @db.Timestamp(6)
+  Training_End_Date                DateTime?             @map("Training End Date") @db.Timestamp(6)
+  Training_Status                  String?               @map("Training Status")
+  parent_id                        BigInt?               @map("_parent_id")
+  org_unit_id                      BigInt?               @map("_org_unit_id")
+  owner_id                         BigInt?               @map("_owner_id")
+  audit_data                       String?               @map("_audit_data")
+  updated_at                       BigInt?               @map("_updated_at")
+  Role_vs_Service_Type             Role_vs_Service_Type? @relation(fields: [Role], references: [Role], onDelete: NoAction, onUpdate: NoAction, map: "Employee ISP Master_Role_fk_Role vs Service Type_Role")
+  RoleID8and9_Slots                RoleID8and9_Slots[]
+
+  @@index([parent_id], map: "parentid_1677069617507758931756")
+  @@map("Employee ISP Master")
+}
+
+model Individual_Account_Details {
+  record_id                                                  BigInt    @id @map("_record_id")
+  Associate_ID                                               String?   @map("Associate ID")
+  Associate_Email_ID                                         String?   @map("Associate Email ID")
+  Associate_Name                                             String?   @map("Associate Name")
+  Associate_Service_ID                                       String?   @map("Associate Service ID")
+  Business_Service_Type                                      String?   @map("Business Service Type")
+  Associate_Type                                             String?   @map("Associate Type")
+  Status                                                     String?
+  Training_Start_Date                                        DateTime? @map("Training Start Date") @db.Timestamp(6)
+  Training_Status                                            String?   @map("Training Status")
+  Tag_1                                                      String?   @map("Tag 1")
+  Tag_2                                                      String?   @map("Tag 2")
+  Tag_3                                                      String?   @map("Tag 3")
+  Tag_4                                                      String?   @map("Tag 4")
+  Tag_5                                                      String?   @map("Tag 5")
+  parent_id                                                  BigInt?   @map("_parent_id")
+  org_unit_id                                                BigInt?   @map("_org_unit_id")
+  owner_id                                                   BigInt?   @map("_owner_id")
+  audit_data                                                 String?   @map("_audit_data")
+  updated_at                                                 BigInt?   @map("_updated_at")
+  TrainingEmployee_ISP_Master_Employee_ISP_Master___End_Date DateTime? @map("TrainingEmployee_ISP_Master Employee_ISP_Master[] End Date") @db.Timestamp(6)
+
+  @@index([parent_id], map: "parentid_1677069672954306067354")
+  @@map("Individual Account Details")
+}
+
+model Personal_Details {
+  record_id                                                       BigInt   @id @map("_record_id")
+  Name_of_Associate                                               String?  @map("Name of Associate")
+  Full_Name                                                       String?  @map("Full Name")
+  First_Name                                                      String?  @map("First Name")
+  Last_Name                                                       String?  @map("Last Name")
+  Middle_Name                                                     String?  @map("Middle Name")
+  Mobile_Number                                                   String?  @map("Mobile Number")
+  Landline_Number                                                 BigInt?  @map("Landline Number")
+  Gender                                                          String?
+  Country                                                         String?
+  State                                                           String?
+  District                                                        String?
+  City                                                            String?
+  Postal_Address                                                  String?  @map("Postal Address")
+  Clinic_address                                                  String?  @map("Clinic address")
+  Pin_or_Zip_Code                                                 String?  @map("Pin or Zip Code")
+  Max_Travel_Distance_for_Home_Visit_in_Kilometers                Decimal? @map("Max Travel Distance for Home Visit in Kilometers") @db.Decimal
+  Select_The_Languages_You_Can_Speak                              String?  @map("Select The Languages You Can Speak")
+  Aadhar_Card_Number                                              BigInt?  @map("Aadhar Card Number")
+  Website_Address                                                 String?  @map("Website Address")
+  Select_Your_Highest_Qualification                               String?  @map("Select Your Highest Qualification")
+  University_or_Institue_Name_where_you_have_pursued_your_highest String?  @map("University or Institue Name where you have pursued your highest")
+  Select_Tenants                                                  String?  @map("Select Tenants")
+  Select_Organization                                             String?  @map("Select Organization")
+  Type_of_Doctor                                                  String?  @map("Type of Doctor")
+  Specialization                                                  String?
+  Role                                                            String?
+  Order_Assignement_Mode                                          String?  @map("Order Assignement Mode")
+  Description                                                     String?
+  Call_Health_Recommended                                         String?  @map("Call Health Recommended")
+  Exclusive_for_Covid                                             String?  @map("Exclusive for Covid")
+  Channels                                                        String?
+  Service_Type                                                    String?  @map("Service Type")
+  Tag_1                                                           String?  @map("Tag 1")
+  Tag_2                                                           String?  @map("Tag 2")
+  Tag_3                                                           String?  @map("Tag 3")
+  Tag_4                                                           String?  @map("Tag 4")
+  Tag_5                                                           String?  @map("Tag 5")
+  Doctor_ID                                                       String?  @map("Doctor ID")
+  Minimum_Guarantee_Consultation_Per_Day                          String?  @map("Minimum Guarantee Consultation Per Day")
+  Country_Code                                                    String?  @map("Country Code")
+  Price_Per_Order                                                 BigInt?  @map("Price Per Order")
+  Landmark                                                        String?
+  parent_id                                                       BigInt?  @map("_parent_id")
+  org_unit_id                                                     BigInt?  @map("_org_unit_id")
+  owner_id                                                        BigInt?  @map("_owner_id")
+  audit_data                                                      String?  @map("_audit_data")
+  updated_at                                                      BigInt?  @map("_updated_at")
+
+  @@index([parent_id], map: "parentid_16770696731761926190079")
+  @@map("Personal Details")
+}
+
 model Reference_test_names {
   record_id      BigInt  @id @map("_record_id")
   Type           String?
@@ -35,4 +226,73 @@ model Reference_test_names {
 
   @@index([parent_id], map: "parentid_16770695550491920393149")
   @@map("Reference test names")
+}
+
+model Role_vs_Service_Type {
+  record_id           BigInt                @id @map("_record_id")
+  Role                String?               @unique
+  Service_Type        String?               @map("Service Type")
+  parent_id           BigInt?               @map("_parent_id")
+  org_unit_id         BigInt?               @map("_org_unit_id")
+  owner_id            BigInt?               @map("_owner_id")
+  audit_data          String?               @map("_audit_data")
+  updated_at          BigInt?               @map("_updated_at")
+  Employee_ISP_Master Employee_ISP_Master[]
+
+  @@index([parent_id], map: "parentid_16770706054121207840723")
+  @@map("Role vs Service Type")
+}
+
+model RoleID8and9_Slots {
+  record_id             BigInt               @id @map("_record_id")
+  slot_id               BigInt?
+  officer_id            String?
+  engagement_level      String?
+  is_booked             BigInt?
+  is_soft_lock          BigInt?
+  soft_locked_date      DateTime?            @db.Timestamp(6)
+  is_available          BigInt?
+  enabled               BigInt?
+  officer_status        BigInt?
+  created_by            String?
+  created_date          DateTime?            @db.Timestamp(6)
+  modified_by           String?
+  modified_date         DateTime?            @db.Timestamp(6)
+  gender                BigInt?
+  associate_id          String?
+  branch_id             String?
+  speciality            String?
+  service_category      BigInt?
+  role_id               BigInt?
+  skill_level           BigInt?
+  consultation_types    String?
+  officer_name          String?
+  officer_type          BigInt?
+  contact_number        String?
+  ch_owned              BigInt?
+  patient_mrn           BigInt?
+  service_did           String?
+  careplan_tr_id        String?
+  id                    String?
+  associate_category    BigInt?
+  order_assignment_mode BigInt?
+  transaction_id        String?
+  scheduled_date        DateTime?            @db.Timestamp(6)
+  slot_start_time       String?
+  slot_end_time         String?
+  skill                 String?
+  order_latitude        Decimal?             @db.Decimal
+  order_longitude       Decimal?             @db.Decimal
+  order_type            String?
+  order_count           BigInt?
+  pincode               String?
+  patientGender         BigInt?
+  parent_id             BigInt?              @map("_parent_id")
+  org_unit_id           BigInt?              @map("_org_unit_id")
+  owner_id              BigInt?              @map("_owner_id")
+  audit_data            String?              @map("_audit_data")
+  updated_at            BigInt?              @map("_updated_at")
+  Employee_ISP_Master   Employee_ISP_Master? @relation(fields: [officer_id], references: [Officer_ID], onDelete: NoAction, onUpdate: NoAction, map: "RoleID8and9_Slots_fk_officerid_Employee ISP Master")
+
+  @@index([parent_id], map: "parentid_16770695965431236849185")
 }
